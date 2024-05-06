@@ -33,6 +33,7 @@ local options = {
   linebreak = true,                            -- break lines between words
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
+  cmdheight = 1,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
 }
 

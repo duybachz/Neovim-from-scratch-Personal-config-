@@ -65,6 +65,8 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lua" -- nvim-cmp source for Lua API
+  use "David-Kunz/cmp-npm" -- Autocomplete npm packages and its versions
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine

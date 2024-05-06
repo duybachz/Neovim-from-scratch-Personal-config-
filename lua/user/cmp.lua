@@ -112,6 +112,8 @@ cmp.setup {
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "nvim_lua" },
+    { name = "npm" }
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
@@ -121,7 +123,7 @@ cmp.setup {
     documentation = cmp.config.window.bordered(),
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
     native_menu = false,
   },
 }
