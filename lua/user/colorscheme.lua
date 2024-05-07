@@ -1,4 +1,4 @@
-local colorscheme = "kanagawa-dragon"
+local colorscheme = "darkplus"
 
 -- Settting local variable status_ok; do protected call with vim.cmd
 -- .. for concatenate
