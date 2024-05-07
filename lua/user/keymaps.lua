@@ -28,10 +28,10 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-w>", ":resize -2<CR>", opts)
-keymap("n", "<C-s>", ":resize +2<CR>", opts)
-keymap("n", "<C-a>", ":vertical resize +2<CR>", opts)
-keymap("n", "<C-d>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-Up>", ":resize -2<CR>", opts)
+keymap("n", "<A-Down>", ":resize +2<CR>", opts)
+keymap("n", "<A-Left>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-Right>", ":vertical resize -2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
