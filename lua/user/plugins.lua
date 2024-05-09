@@ -92,6 +92,7 @@ return packer.startup(function(use)
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
+
   end
 
 end)
