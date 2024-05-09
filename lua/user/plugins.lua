@@ -44,7 +44,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use 'rstacruz/vim-closer' -- Closes brackets automatically
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   -- Lazyloading: Plugin is not in start directory
   -- Plugin will only starts if you run one of the following commands in the cmd parameter
   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
