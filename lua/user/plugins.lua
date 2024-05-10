@@ -85,6 +85,9 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+
+  -- Git
+  use "lewis6991/gitsigns.nvim"
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use "hiphish/rainbow-delimiters.nvim"
 
