@@ -1,3 +1,10 @@
+require('ts_context_commentstring').setup {
+  enable_autocmd = true,
+  languages = {
+    lua = '-- %s',
+  },
+}
+
 local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
   return
