@@ -8,7 +8,7 @@ if not status_ok then
 end
 
 local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
+  if not config_status_ok then
     return
 end
 
