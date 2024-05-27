@@ -75,4 +75,4 @@ keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>s", ":BufferLinePick<CR>", opts)
 
-keymap("n", "<leader>ff", ":Format<cr>", opts)
+keymap("n", "<leader>m", ":Format<cr>", opts)
