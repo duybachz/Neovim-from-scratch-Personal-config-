@@ -55,7 +55,7 @@ return packer.startup(function(use)
   -- Plugin will only starts if you run one of the following commands in the cmd parameter
   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
   -- Plugins can have post-install/update hooks
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
 
   -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
