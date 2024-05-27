@@ -58,10 +58,11 @@ return packer.startup(function(use)
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
   use "lukas-reineke/indent-blankline.nvim"
 
-  -- Colorschemes
+  -- Colorschemes & Aesthetics
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
   use "rebelot/kanagawa.nvim"
+  use "lukas-reineke/virt-column.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
