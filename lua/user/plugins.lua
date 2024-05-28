@@ -50,7 +50,7 @@ return packer.startup(function(use)
   use "moll/vim-bbye"
   use "tpope/vim-surround"
   use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+  use 'nvim-tree/nvim-tree.lua'
   -- Lazyloading: Plugin is not in start directory
   -- Plugin will only starts if you run one of the following commands in the cmd parameter
   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
@@ -81,7 +81,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim" -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "nvimtools/none-ls.nvim" -- for formatters and linters
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
