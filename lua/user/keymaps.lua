@@ -69,10 +69,10 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- Open the nvim-tree panel
 --[[ keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts) ]]
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>s", ":BufferLinePick<CR>", opts)
-
-keymap("n", "<leader>m", ":Format<cr>", opts)
+keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts) -- Open telescope dropdown for searching for files
+keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts) -- Open live grep
+keymap("n", "<leader>s", ":BufferLinePick<CR>", opts) -- Toggle quick bufferline picking
+keymap("n", "<leader>w", ":bdelete!<CR>", opts) -- Close current buffer with vim-bbye
+keymap("n", "<leader>m", ":Format<cr>", opts) -- Format current open buffer with null-ls
