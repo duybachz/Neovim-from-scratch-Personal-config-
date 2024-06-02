@@ -59,6 +59,7 @@ return packer.startup(function(use)
   -- Plugins can have post-install/update hooks
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
   use "lukas-reineke/indent-blankline.nvim"
+  use "RRethy/vim-illuminate"
 
   -- Colorschemes & Aesthetics
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
