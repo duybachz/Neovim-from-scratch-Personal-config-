@@ -73,6 +73,14 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts) -- Open the nvim-tree pane
 --[[ keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts) ]]
 keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts) -- Open telescope dropdown for searching for files
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts) -- Open live grep
+
+-- Bufferline & null-ls
 keymap("n", "<leader>s", ":BufferLinePick<CR>", opts) -- Toggle quick bufferline picking
 keymap("n", "<leader>w", ":bdelete!<CR>", opts) -- Close current buffer with vim-bbye
 keymap("n", "<leader>m", ":Format<cr>", opts) -- Format current open buffer with null-ls
+
+-- nvim-dap
+keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts)
+keymap("n", "<leader>dr", ":DapContinue<CR>", opts)
+
+-- keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)

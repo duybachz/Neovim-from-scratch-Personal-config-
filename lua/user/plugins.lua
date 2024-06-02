@@ -46,12 +46,13 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Easily comment stuff
-  use "akinsho/bufferline.nvim"
-  use "moll/vim-bbye"
-  use "tpope/vim-surround"
+  use "akinsho/bufferline.nvim" -- Bufferline plugin
+  use "moll/vim-bbye" -- Plugin for closing current open buffer
+  use "tpope/vim-surround" -- Plugin for automatically closing parenthesises
   use 'kyazdani42/nvim-web-devicons'
   use { "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" }
   use { "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" }
+  use { "akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda" }
   -- Lazyloading: Plugin is not in start directory
   -- Plugin will only starts if you run one of the following commands in the cmd parameter
   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
@@ -78,11 +79,16 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- LSP
+  -- LSP & DAP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim" -- simple to use language server installer
+  use "jay-babu/mason-null-ls.nvim" -- closes some gaps that exist between mason.nvim and null-ls
   use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
+  use "mfussenegger/nvim-dap" -- Debug Adapter Protocol client implementation for Neovim
+  use {"jay-babu/mason-nvim-dap.nvim", requires = {"williamboman/mason.nvim", "mfussenegger/nvim-dap"} }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
   use "nvimtools/none-ls.nvim" -- for formatters and linters
+  use "nvimtools/none-ls-extras.nvim" -- Extra sources for nvimtools/none-ls.nvim
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
