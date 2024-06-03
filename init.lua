@@ -1,3 +1,4 @@
+vim.loader.enable()
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
@@ -15,5 +16,5 @@ require "user.ibl"
 require "user.virt-column"
 require "user.lualine"
 require "user.toggleterm"
--- require "user.mason-nvim-dap"
--- require "user.nvim-dap-ui"
+require "user.mason-nvim-dap"
+require "user.nvim-dap-ui"

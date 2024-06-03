@@ -80,14 +80,18 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- LSP & DAP
+  -- LSP 
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim" -- simple to use language server installer
   use "jay-babu/mason-null-ls.nvim" -- closes some gaps that exist between mason.nvim and null-ls
   use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
+
+  -- DAP
   use "mfussenegger/nvim-dap" -- Debug Adapter Protocol client implementation for Neovim
   use {"jay-babu/mason-nvim-dap.nvim", requires = {"williamboman/mason.nvim", "mfussenegger/nvim-dap"} }
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+
+  -- null-ls alternative
   use "nvimtools/none-ls.nvim" -- for formatters and linters
   use "nvimtools/none-ls-extras.nvim" -- Extra sources for nvimtools/none-ls.nvim
 

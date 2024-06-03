@@ -6,6 +6,9 @@ end
 mason_nvim_dap.setup({
   ensure_installed = {
     'codelldb',
+    'chrome-debug-adapter',
+    'cpptools'
   },
+  automatic_installation = true,
   handlers = {},
 })
