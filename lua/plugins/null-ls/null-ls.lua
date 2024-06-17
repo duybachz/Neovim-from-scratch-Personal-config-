@@ -25,7 +25,7 @@ return {
           formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
           formatting.black.with({ extra_args = { "--fast" } }),
           formatting.stylua,
-          diagnostics.cppcheck.with({ extra_args = { "--enable=warning,style,performance,portability", "--template=gcc", "$FILENAME" } }),
+          diagnostics.cppcheck.with({ extra_args = { "--enable=style,performance,portability", "--template=gcc", "$FILENAME" } }),
           require("none-ls.diagnostics.flake8"),
           -- formatting.yapf,
           -- diagnostics.flake8,
