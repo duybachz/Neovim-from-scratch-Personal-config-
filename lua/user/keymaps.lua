@@ -75,8 +75,8 @@ keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts) -- Open live grep
 
 -- Bufferline & null-ls
-keymap("n", "<leader>s", ":BufferLinePick<CR>", opts) -- Toggle quick bufferline picking
-keymap("n", "<leader>w", ":bdelete!<CR>", opts) -- Close current buffer with vim-bbye
+-- keymap("n", "<leader>s", ":BufferLinePick<CR>", opts) -- Toggle quick bufferline picking
+-- keymap("n", "<leader>w", ":bdelete!<CR>", opts) -- Close current buffer with vim-bbye
 keymap("n", "<leader>m", ":Format<cr>", opts) -- Format current open buffer with null-ls
 
 -- nvim-dap

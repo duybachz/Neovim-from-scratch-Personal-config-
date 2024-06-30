@@ -21,7 +21,8 @@ return {
       -- Add your own debuggers here
       'leoluz/nvim-dap-go',
     },
-    opts = {
+    keys = {
+      "<leader>d", "<F1>", "<F2>", "<F3>", "<F5>",
     },
     config = function ()
       local status_ok, dap = pcall(require, "dap")
@@ -67,8 +68,8 @@ return {
       vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
       vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
       vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-      vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-      vim.keymap.set('n', '<leader>B', function()
+      -- vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+      vim.keymap.set('n', '<leader>dB', function()
         dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
       end, { desc = 'Debug: Set Breakpoint' })
 
@@ -133,103 +134,101 @@ return {
 
       -- For Typescript & Javascript
       -- Based on alphi2phi/neovim-pde
-      vscode_js_debug = function()
-        local function get_js_debug()
-          local install_path = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-          return install_path .. "/js-debug/src/dapDebugServer.js"
-        end
+      local function get_js_debug()
+        local install_path = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
+        return install_path .. "/js-debug/src/dapDebugServer.js"
+      end
 
-        for _, adapter in ipairs { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" } do
-          require("dap").adapters[adapter] = {
-            type = "server",
-            host = "localhost",
-            port = "${port}",
-            executable = {
-              command = "node",
-              args = {
-                get_js_debug(),
-                "${port}",
-              },
+      for _, adapter in ipairs { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" } do
+        dap.adapters[adapter] = {
+          type = "server",
+          host = "localhost",
+          port = "${port}",
+          executable = {
+            command = "node",
+            args = {
+              get_js_debug(),
+              "${port}",
             },
-          }
-        end
+          },
+        }
+      end
 
-        for _, language in ipairs { "typescript", "javascript" } do
-          require("dap").configurations[language] = {
-            {
-              type = "pwa-node",
-              request = "launch",
-              name = "Launch file",
-              program = "${file}",
-              cwd = "${workspaceFolder}",
+      for _, language in ipairs { "typescript", "javascript" } do
+        dap.configurations[language] = {
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Launch file",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+          },
+          {
+            type = "pwa-node",
+            request = "attach",
+            name = "Attach",
+            processId = require("dap.utils").pick_process,
+            cwd = "${workspaceFolder}",
+          },
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug Jest Tests",
+            -- trace = true, -- include debugger info
+            runtimeExecutable = "node",
+            runtimeArgs = {
+              "./node_modules/jest/bin/jest.js",
+              "--runInBand",
             },
-            {
-              type = "pwa-node",
-              request = "attach",
-              name = "Attach",
-              processId = require("dap.utils").pick_process,
-              cwd = "${workspaceFolder}",
-            },
-            {
-              type = "pwa-node",
-              request = "launch",
-              name = "Debug Jest Tests",
-              -- trace = true, -- include debugger info
-              runtimeExecutable = "node",
-              runtimeArgs = {
-                "./node_modules/jest/bin/jest.js",
-                "--runInBand",
-              },
-              rootPath = "${workspaceFolder}",
-              cwd = "${workspaceFolder}",
-              console = "integratedTerminal",
-              internalConsoleOptions = "neverOpen",
-            },
-            {
-              type = "pwa-chrome",
-              name = "Attach - Remote Debugging",
-              request = "attach",
-              program = "${file}",
-              cwd = vim.fn.getcwd(),
-              sourceMaps = true,
-              protocol = "inspector",
-              port = 9222, -- Start Chrome google-chrome --remote-debugging-port=9222
-              webRoot = "${workspaceFolder}",
-            },
-            {
-              type = "pwa-chrome",
-              name = "Launch Chrome",
-              request = "launch",
-              url = "http://localhost:5173", -- This is for Vite. Change it to the framework you use
-              webRoot = "${workspaceFolder}",
-              userDataDir = "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
-            },
-          }
-        end
+            rootPath = "${workspaceFolder}",
+            cwd = "${workspaceFolder}",
+            console = "integratedTerminal",
+            internalConsoleOptions = "neverOpen",
+          },
+          {
+            type = "pwa-chrome",
+            name = "Attach - Remote Debugging",
+            request = "attach",
+            program = "${file}",
+            cwd = vim.fn.getcwd(),
+            sourceMaps = true,
+            protocol = "inspector",
+            port = 9222, -- Start Chrome google-chrome --remote-debugging-port=9222
+            webRoot = "${workspaceFolder}",
+          },
+          {
+            type = "pwa-chrome",
+            name = "Launch Chrome",
+            request = "launch",
+            url = "http://localhost:5173", -- This is for Vite. Change it to the framework you use
+            webRoot = "${workspaceFolder}",
+            userDataDir = "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
+          },
+        }
+      end
 
-        for _, language in ipairs { "typescriptreact", "javascriptreact" } do
-          require("dap").configurations[language] = {
-            {
-              type = "pwa-chrome",
-              name = "Attach - Remote Debugging",
-              request = "attach",
-              program = "${file}",
-              cwd = vim.fn.getcwd(),
-              sourceMaps = true,
-              protocol = "inspector",
-              port = 9222, -- Start Chrome google-chrome --remote-debugging-port=9222
-              webRoot = "${workspaceFolder}",
-            },
-            {
-              type = "pwa-chrome",
-              name = "Launch Chrome",
-              request = "launch",
-              url = "http://localhost:5173", -- This is for Vite. Change it to the framework you use
-              webRoot = "${workspaceFolder}",
-              userDataDir = "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
-            },
-          }
-        end
+      for _, language in ipairs { "typescriptreact", "javascriptreact" } do
+        dap.configurations[language] = {
+          {
+            type = "pwa-chrome",
+            name = "Attach - Remote Debugging",
+            request = "attach",
+            program = "${file}",
+            cwd = vim.fn.getcwd(),
+            sourceMaps = true,
+            protocol = "inspector",
+            port = 9222, -- Start Chrome google-chrome --remote-debugging-port=9222
+            webRoot = "${workspaceFolder}",
+          },
+          {
+            type = "pwa-chrome",
+            name = "Launch Chrome",
+            request = "launch",
+            url = "http://localhost:5173", -- This is for Vite. Change it to the framework you use
+            webRoot = "${workspaceFolder}",
+            userDataDir = "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
+          },
+        }
       end
 
       -- Install golang specific config
