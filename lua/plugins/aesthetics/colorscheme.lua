@@ -1,6 +1,10 @@
 return {
   -- Colorschemes & Aesthetics
   {
+    "folke/tokyonight.nvim",
+    lazy = false,
+  },
+  {
     "lunarvim/colorschemes", -- A bunch of colorschemes you can try out
     lazy = false,
   },
