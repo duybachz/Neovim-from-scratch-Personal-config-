@@ -1,7 +1,6 @@
 return {
   {
     'nvim-java/nvim-java',
-    ft = {"java"},
     config = function ()
       local ok_status, java = pcall(require, "java")
       if not ok_status then

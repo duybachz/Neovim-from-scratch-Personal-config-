@@ -13,15 +13,21 @@ return {
   },
   {
     "williamboman/mason.nvim", -- simple to  language server installer
+    event = "VeryLazy",
     dependencies = {
+      -- Auto-install LSPs, linters, formatters, debuggers (For Java)
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
        -- closes some gaps that exist between mason.nvim and null-ls
       "jay-babu/mason-null-ls.nvim",
        -- simple to use language server installer
       "williamboman/mason-lspconfig.nvim",
     },
-    event = "VeryLazy",
     config = function ()
       local servers = {
+        -- Java
+        "jdtls",
+        "gradle_ls",
+        "groovyls",
         -- Lua
         "lua_ls",
         -- CSS
@@ -67,6 +73,24 @@ return {
         automatic_installation = true,
       })
 
+      -- There is an issue with mason-tools-installer running with VeryLazy, since it triggers on VimEnter which has already occurred prior to this plugin loading so we need to call install explicitly
+      -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues/39
+      vim.api.nvim_command('MasonToolsInstall')
+
+      -- For Java debugging
+      local mason_tool_status, mason_tool_installer = pcall(require, "mason-tool-installer")
+      if not mason_tool_status then
+        return
+      end
+
+      mason_tool_installer.setup({
+        -- Install these linters, formatters and debuggers automatically
+        ensure_installed = {
+          "java-debug-adapter",
+          "java-test"
+        }
+      })
+
       local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
       if not lspconfig_status_ok then
         return
@@ -83,12 +107,14 @@ return {
 
         server = vim.split(server, "@")[1]
 
-        local require_ok, conf_opts = pcall(require, "plugins.lsp.settings." .. server)
-        if require_ok then
-          opts = vim.tbl_deep_extend("force", conf_opts, opts)
-        end
+        if server ~= 'jdtls' then
+          local require_ok, conf_opts = pcall(require, "plugins.lsp.settings." .. server)
+          if require_ok then
+            opts = vim.tbl_deep_extend("force", conf_opts, opts)
+          end
 
-        lspconfig[server].setup(opts)
+          lspconfig[server].setup(opts)
+        end
       end
     end
   },

@@ -85,4 +85,4 @@ keymap("n", "<leader>m", ":Format<cr>", opts) -- Format current open buffer with
 keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts)
 keymap("n", "<leader>dr", ":DapContinue<CR>", opts)
 
--- keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)
