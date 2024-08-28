@@ -11,5 +11,5 @@ else
   -- Neovim
   require "user.options"
   require "user.keymaps"
-  require "user.plugins"
+  -- require "user.plugins"
 end
