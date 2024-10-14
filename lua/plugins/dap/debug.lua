@@ -23,7 +23,7 @@ return {
       'leoluz/nvim-dap-go',
     },
     keys = {
-      "<leader>d", "<F1>", "<F2>", "<F3>", "<F5>",
+      "<leader>d"
     },
     config = function ()
       local status_ok, dap = pcall(require, "dap")
@@ -65,14 +65,21 @@ return {
       })
 
       -- Basic debugging keymaps, feel free to change to your liking!
-      vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-      vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-      vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-      vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-      -- vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+      vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
+      vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
       vim.keymap.set('n', '<leader>dB', function()
         dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end, { desc = 'Debug: Set Breakpoint' })
+      end, { desc = 'Debug: Set Breakpoint Condition' })
+      vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Debug: Step Into' })
+      vim.keymap.set('n', '<leader>dO', dap.step_over, { desc = 'Debug: Step Over' })
+      vim.keymap.set('n', '<leader>do', dap.step_out, { desc = 'Debug: Step Out' })
+      vim.keymap.set('n', '<leader>dl', dap.repl.toggle, { desc = 'Debug: Toggle REPL' })
+      vim.keymap.set('n', '<leader>dL', dap.run_last, { desc = 'Debug: Run last' })
+      vim.keymap.set('n', '<leader>dp', dap.pause, { desc = 'Debug: Pause' })
+      vim.keymap.set('n', '<leader>dR', dap.restart, { desc = 'Debug: Restart' })
+      vim.keymap.set('n', '<leader>dT', dap.terminate, { desc = 'Debug: Terminate session' })
+      vim.keymap.set('n', '<leader>dj', dap.down, { desc = 'Debug: Move down stack trace' })
+      vim.keymap.set('n', '<leader>dk', dap.up, { desc = 'Debug: Move up stack trace' })
 
       -- Dap UI setup
       -- For more information, see |:help nvim-dap-ui|
@@ -83,21 +90,21 @@ return {
         icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
         controls = {
           icons = {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
+            disconnect = "",
+            pause = "",
+            play = "",
+            run_last = "",
+            step_back = "",
+            step_into = "",
+            step_out = "",
+            step_over = "",
+            terminate = ""
           },
         },
       }
 
       -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-      vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+      vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = 'Debug: Dap UI' })
 
       dap.listeners.after.event_initialized['dapui_config'] = dapui.open
       dap.listeners.before.event_terminated['dapui_config'] = dapui.close
@@ -128,13 +135,15 @@ return {
           end,
           cwd = "${workspaceFolder}",
           stopOnEntry = false,
+          arg = {}
         },
       }
       dap.configurations.c = dap.configurations.cpp
       dap.configurations.rust = dap.configurations.cpp
 
       -- For Typescript & Javascript
-      -- Based on alphi2phi/neovim-pde
+      -- Based on alphi2phi/modern-neovim 
+      -- https://github.com/alpha2phi/modern-neovim/blob/main/lua/pde/typescript.lua
       local function get_js_debug()
         local install_path = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
         return install_path .. "/js-debug/src/dapDebugServer.js"

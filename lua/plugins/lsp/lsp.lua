@@ -22,7 +22,7 @@ return {
        -- simple to use language server installer
       "williamboman/mason-lspconfig.nvim",
     },
-    config = function ()
+    opts = function ()
       local servers = {
         -- Java
         "jdtls",
@@ -35,7 +35,7 @@ return {
         -- HTML
         "html",
         -- Javascript
-        "tsserver",
+        "ts_ls",
         -- Python
         "pyright",
         -- Bash
@@ -61,6 +61,10 @@ return {
         },
         log_level = vim.log.levels.INFO,
         max_concurrent_installers = 4,
+        registries = {
+          'github:nvim-java/mason-registry',
+          'github:mason-org/mason-registry',
+        },
       }
 
       require("mason").setup(settings)

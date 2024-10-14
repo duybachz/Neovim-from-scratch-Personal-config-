@@ -30,8 +30,8 @@ keymap("n", "<C-m>", "<cmd>split<CR>", opts)
 -- Resize with arrows
 keymap("n", "<A-Up>", ":resize +2<CR>", opts)
 keymap("n", "<A-Down>", ":resize -2<CR>", opts)
-keymap("n", "<A-Left>", ":vertical resize +2<CR>", opts)
-keymap("n", "<A-Right>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -80,9 +80,3 @@ keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts) -- Open live grep
 -- keymap("n", "<leader>s", ":BufferLinePick<CR>", opts) -- Toggle quick bufferline picking
 -- keymap("n", "<leader>w", ":bdelete!<CR>", opts) -- Close current buffer with vim-bbye
 keymap("n", "<leader>m", ":Format<cr>", opts) -- Format current open buffer with null-ls
-
--- nvim-dap
-keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts)
-keymap("n", "<leader>dr", ":DapContinue<CR>", opts)
-
-keymap("n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)

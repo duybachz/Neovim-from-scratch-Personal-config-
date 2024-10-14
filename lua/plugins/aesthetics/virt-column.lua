@@ -10,7 +10,7 @@ return {
 
       virt_column.setup({
         char = "▏",
-        virtcolumn = "+1, 80"
+        virtcolumn = "+1, 120",
       })
     end
   },
