@@ -1,4 +1,4 @@
-local function get_codelldb()
+local function getCodeLLDB()
   local mason_registry = require "mason-registry"
   local codelldb = mason_registry.get_package "codelldb"
   local extension_path = codelldb:get_install_path() .. "/extension/"
@@ -21,6 +21,7 @@ return {
       'jay-babu/mason-nvim-dap.nvim',
       -- Add your own debuggers here
       'leoluz/nvim-dap-go',
+      'mfussenegger/nvim-dap-python',
     },
     keys = {
       "<leader>d"
@@ -66,6 +67,12 @@ return {
 
       -- Basic debugging keymaps, feel free to change to your liking!
       vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
+      vim.keymap.set('n', '<leader>dC', function ()
+        if (vim.fn.filereadable(".vscode/launch.json")) then
+          require('dap.ext.vscode').load_launchjs()
+        end
+        dap.continue()
+      end, { desc = 'Debug: Start with config'})
       vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
       vim.keymap.set('n', '<leader>dB', function()
         dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
@@ -111,8 +118,17 @@ return {
       dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
       -- Configure debugging for languages
+      -- For Python
+      if (vim.bo.filetype == 'python') then
+        local _, dapPython = pcall(require, "dap-python");
+        if not _ then
+          return
+        end
+
+        dapPython.setup()
+      end
       -- For C, C++ and Rust
-      local codelldb_path, _ = get_codelldb()
+      local codelldb_path, _ = getCodeLLDB()
       dap.adapters.codelldb = {
         type = 'server',
         port = "${port}",

@@ -116,20 +116,6 @@ return {
           nowait = true,
           remap = false
         },
-        {
-          "<leader>db",
-          "<cmd> DapToggleBreakpoint <CR>",
-          desc = "Add breakpoint",
-          nowait = true,
-          remap = false
-        },
-        {
-          "<leader>dr",
-          "<cmd> DapContinue <CR>",
-          desc = "Start debugger",
-          nowait = true,
-          remap = false
-        },
         -- Gitsigns
         {
           "<leader>g",
