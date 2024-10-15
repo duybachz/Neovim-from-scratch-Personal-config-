@@ -25,7 +25,7 @@ return {
     opts = function ()
       local servers = {
         -- Java
-        "jdtls",
+        -- "jdtls",
         "gradle_ls",
         "groovyls",
         -- Lua

@@ -31,8 +31,8 @@ return {
         return
       end
 
-      local status_ok, dapui = pcall(require, "dapui")
-      if not status_ok then
+      local status_ok_1, dapui = pcall(require, "dapui")
+      if not status_ok_1 then
         return
       end
       
@@ -83,7 +83,7 @@ return {
 
       -- Dap UI setup
       -- For more information, see |:help nvim-dap-ui|
-      dapui.setup {
+      dapui.setup({
         -- Set icons to characters that are more likely to work in every terminal.
         --    Feel free to remove or use ones that you like more! :)
         --    Don't feel like these are good choices.
@@ -101,7 +101,7 @@ return {
             terminate = ""
           },
         },
-      }
+      })
 
       -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
       vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = 'Debug: Dap UI' })
@@ -241,12 +241,58 @@ return {
         }
       end
 
+      -- For Go
       -- Install golang specific config
       require('dap-go').setup {
         delve = {
           -- On Windows delve must be run attached or it crashes.
           -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
           detached = vim.fn.has 'win32' == 0,
+        },
+      }
+
+      -- For Java
+      dap.configurations.java = {
+        {
+          name = "Debug Launch (2GB)";
+          type = 'java';
+          request = 'launch';
+          vmArgs = "" ..
+            "-Xmx2g "
+        },
+        {
+          name = "Debug Attach (8000)";
+          type = 'java';
+          request = 'attach';
+          hostName = "127.0.0.1";
+          port = 8000;
+        },
+        {
+          name = "Debug Attach (5005)";
+          type = 'java';
+          request = 'attach';
+          hostName = "127.0.0.1";
+          port = 5005;
+        },
+        {
+          name = "My Custom Java Run Configuration",
+          type = "java",
+          request = "launch",
+          -- You need to extend the classPath to list your dependencies.
+          -- `nvim-jdtls` would automatically add the `classPaths` property if it is missing
+          -- classPaths = {},
+
+          -- If using multi-module projects, remove otherwise.
+          -- projectName = "yourProjectName",
+
+          -- javaExec = "java",
+          mainClass = "replace.with.your.fully.qualified.MainClass",
+
+          -- If using the JDK9+ module system, this needs to be extended
+          -- `nvim-jdtls` would automatically populate this property
+          -- modulePaths = {},
+          vmArgs = "" ..
+            "-Xmx2g "
         },
       }
       end

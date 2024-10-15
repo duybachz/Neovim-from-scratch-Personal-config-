@@ -25,20 +25,27 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter"
     },
-    opts = {
-      adapters = {
-        ["neotest-java"] = {
-          -- config here
-        },
-        ["neotest-jest"] = {
-          jestCommand = "npm test --",
-          jestConfigFile = "custom.jest.config.ts",
-          env = { CI = true },
-          cwd = function(path)
-            return vim.fn.getcwd()
-          end,
+    config = function ()
+      local _, neotest = pcall(require, "neotest")
+      if not _ then
+        return
+      end
+
+      neotest.setup({
+        adapters = {
+          require('neotest-java')({
+            incremental_build = true
+          }),
+          require('neotest-jest')({
+            jestCommand = "npm test --",
+            jestConfigFile = "custom.jest.config.ts",
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          }),
         }
-      },
-    },
+      })
+    end,
   },
 }
