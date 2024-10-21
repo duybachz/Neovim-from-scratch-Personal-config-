@@ -33,12 +33,14 @@ return {
         -- local fortune = handle:read("*a")
         -- handle:close()
         -- return fortune
-        return "Forked from LunarVim/Neovim-from-scratch"
+        return "365 PARTYGIRL"
       end
 
       dashboard.section.footer.val = footer()
 
-      dashboard.section.footer.opts.hl = "Type"
+      vim.api.nvim_set_hl(0, "bratGreen", { fg = "#8ACE00" })
+
+      dashboard.section.footer.opts.hl = "bratGreen"
       dashboard.section.header.opts.hl = "Include"
       dashboard.section.buttons.opts.hl = "Keyword"
 

@@ -163,13 +163,13 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
-vim.keymap.set("n", "<leader>tc", function ()
+vim.keymap.set("n", "<leader>jc", function ()
   if vim.bo.filetype == 'java' then
     require('jdtls').test_class();
   end
 end, { desc = "JDTLS: Test class"})
 
-vim.keymap.set("n", "<leader>tm", function ()
+vim.keymap.set("n", "<leader>jm", function ()
   if vim.bo.filetype == 'java' then
     require('jdtls').test_nearest_method();
   end

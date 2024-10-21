@@ -438,6 +438,52 @@ return {
           nowait = true,
           remap = false
         },
+        {
+          "<leader>x",
+          group = "Trouble",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>j",
+          group = "JDTLS",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>n",
+          group = "Neotest",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>nl",
+          "<cmd>Neotest summary<cr>",
+          desc = "Summary",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>nf",
+          "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",
+          desc = "Run current file",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>ns",
+          "<cmd>lua require('neotest').run.run({suite = true})<cr>",
+          desc = "Run test suite",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>nm",
+          "<cmd>lua require('neotest').run.run()<cr>",
+          desc = "Run nearest method",
+          nowait = true,
+          remap = false
+        },
       }
 
       which_key.setup(setup)

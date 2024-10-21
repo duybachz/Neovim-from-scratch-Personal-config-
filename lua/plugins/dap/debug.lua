@@ -23,9 +23,7 @@ return {
       'leoluz/nvim-dap-go',
       'mfussenegger/nvim-dap-python',
     },
-    keys = {
-      "<leader>d"
-    },
+    event = "VeryLazy",
     config = function ()
       local status_ok, dap = pcall(require, "dap")
       if not status_ok then
@@ -125,7 +123,11 @@ return {
           return
         end
 
-        dapPython.setup()
+        if (vim.fn.glob('*/bin/debugpy')) then
+          dapPython.setup(vim.fn.getcwd() .. "/env/bin/python3.13")
+        else
+          print("nvim-dap-python: debugpy not found in current environment")
+        end
       end
       -- For C, C++ and Rust
       local codelldb_path, _ = getCodeLLDB()

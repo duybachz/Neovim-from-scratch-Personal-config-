@@ -1,6 +1,6 @@
 return {
   {
-    "rcasia/neotest-java",
+    "atm1020/neotest-jdtls",
     ft = "java",
     dependencies = {
       "mfussenegger/nvim-jdtls",
@@ -18,6 +18,9 @@ return {
   },
   {
     "nvim-neotest/neotest",
+    keys = {
+      "<leader>n"
+    },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/nvim-nio",
@@ -33,9 +36,7 @@ return {
 
       neotest.setup({
         adapters = {
-          require('neotest-java')({
-            incremental_build = true
-          }),
+          require('neotest-jdtls'),
           require('neotest-jest')({
             jestCommand = "npm test --",
             jestConfigFile = "custom.jest.config.ts",
