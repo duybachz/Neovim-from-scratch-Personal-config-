@@ -55,6 +55,20 @@ return {
           remap = false,
         },
         {
+          "<leader>b",
+          "<cmd>BufferLinePick<CR>",
+          desc = "Pick buffer",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>B",
+          "<cmd>Telescope buffers<cr>",
+          desc = "Search buffers",
+          nowait = true,
+          remap = false,
+        },
+        {
           "<leader>c",
           "<cmd>Bdelete!<CR>",
           desc = "Close Buffer",
@@ -69,7 +83,7 @@ return {
         },
         {
           "<leader>f",
-          "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+          "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = true})<cr>",
           desc = "Find files",
           nowait = true,
           remap = false
@@ -89,16 +103,16 @@ return {
           remap = false
         },
         {
-          "<leader>k",
-          "<cmd>BufferLinePick<CR>",
-          desc = "Pick Bufferline",
+          "<leader>P",
+          "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
+          desc = "Projects",
           nowait = true,
           remap = false
         },
         {
-          "<leader>P",
-          "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
-          desc = "Projects",
+          "<leader>r",
+          "<C-w>=",
+          desc = "Resize splits equally",
           nowait = true,
           remap = false
         },
@@ -299,6 +313,34 @@ return {
           remap = false
         },
         {
+          "<leader>lR",
+          "<cmd>Telescope lsp_references<cr>",
+          desc = "Find references",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>lc",
+          "<cmd>Telescope lsp_incoming_calls<cr>",
+          desc = "Find incoming calls",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>lo",
+          "<cmd>Telescope lsp_outgoing_calls<cr>",
+          desc = "Find outgoing calls",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>lm",
+          "<cmd>Telescope lsp_implementations<cr>",
+          desc = "Find implementations",
+          nowait = true,
+          remap = false
+        },
+        {
           "<leader>ls",
           "<cmd>Telescope lsp_document_symbols<cr>",
           desc = "Document Symbols",
@@ -483,6 +525,116 @@ return {
           desc = "Run nearest method",
           nowait = true,
           remap = false
+        },
+        -- Harpoon
+        {
+          "<leader>y",
+          group = "Harpoon",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>ya",
+          "<cmd>lua require('harpoon'):list():add()<cr>",
+          desc = "Harpoon: Add file",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>ys",
+          function ()
+            local harpoon = require('harpoon')
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = "Harpoon: Show UI",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>yk",
+          "<cmd>lua require('harpoon'):list():prev()<cr>",
+          desc = "Harpoon: Previous buffer",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>yj",
+          "<cmd>lua require('harpoon'):list():next()<cr>",
+          desc = "Harpoon: Next buffer",
+          nowait = true,
+          remap = false
+        },
+        {
+          "<leader>1",
+          "<cmd>lua require('harpoon'):list():select(1)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #1",
+          nowait = true,
+          remap = false,
+          hidden = true
+        },
+        {
+          "<leader>2",
+          "<cmd>lua require('harpoon'):list():select(2)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #2",
+          nowait = true,
+          remap = false,
+          hidden = true
+        },
+        {
+          "<leader>3",
+          "<cmd>lua require('harpoon'):list():select(3)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #3",
+          nowait = true,
+          remap = false,
+          hidden = true
+        },
+        {
+          "<leader>4",
+          "<cmd>lua require('harpoon'):list():select(4)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #4",
+          nowait = true,
+          remap = false,
+          hidden = true
+        },
+        {
+          "<leader>5",
+          "<cmd>lua require('harpoon'):list():select(5)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #5",
+          nowait = true,
+          remap = false,
+          hidden = true
+        },
+        {
+          "<leader>6",
+          "<cmd>lua require('harpoon'):list():select(6)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #6",
+          nowait = true,
+          remap = false,
+          hidden = true
+        },
+        {
+          "<leader>7",
+          "<cmd>lua require('harpoon'):list():select(7)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #7",
+          nowait = true,
+          remap = false,
+          hidden = true
+        },
+        {
+          "<leader>8",
+          "<cmd>lua require('harpoon'):list():select(8)<cr>",
+          group = "Harpoon",
+          desc = "Harpoon: Buffer #8",
+          nowait = true,
+          remap = false,
+          hidden = true
         },
       }
 

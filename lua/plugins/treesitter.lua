@@ -24,10 +24,10 @@ return {
           enable = true,       -- false will disable the whole extension
           disable = { "css" }, -- list of language that will be disabled
         },
-        autopairs = {
+        indent = {
           enable = true,
+          disable = { "python", "css" }
         },
-        indent = { enable = true, disable = { "python", "css" } },
 
         --[[ context_commentstring = {
           enable = true,

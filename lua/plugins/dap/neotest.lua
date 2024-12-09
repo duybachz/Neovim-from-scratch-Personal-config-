@@ -17,10 +17,15 @@ return {
     }
   },
   {
+    "nvim-neotest/neotest-python",
+    ft = "python",
+    dependencies = {
+      "nvim-neotest/neotest",
+    }
+  },
+  {
     "nvim-neotest/neotest",
-    keys = {
-      "<leader>n"
-    },
+    event = "VeryLazy",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/nvim-nio",

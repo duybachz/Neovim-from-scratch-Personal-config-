@@ -74,7 +74,7 @@ return {
           },
         },
         view = {
-          width = 30,
+          width = 45,
           side = "left",
           mappings = {
             list = {
