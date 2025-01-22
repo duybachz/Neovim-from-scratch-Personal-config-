@@ -15,7 +15,20 @@ return {
   {
     "rebelot/kanagawa.nvim", -- Colorscheme
     lazy = false,
+    opts = {
+      transparent = true,
+    },
     config = function ()
+      local status, kanagawa = pcall(require, "kanagawa")
+      if not status then
+        return
+      end
+
+      kanagawa.setup({
+        transparent = true,
+        terminalColors = true,
+      })
+
       local colorscheme = "kanagawa-dragon"
 
       -- Settting local variable status_ok; do protected call with vim.cmd
@@ -25,6 +38,8 @@ return {
       if not status_ok then
         return
       end
+      vim.cmd 'highlight TelescopeBorder guibg=none'
+      vim.cmd 'highlight TelescopeTitle guibg=none'
     end
   },
 }

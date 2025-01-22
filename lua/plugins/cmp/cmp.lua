@@ -149,6 +149,15 @@ return {
         },
       }
 
+      -- Disable nvim-cmp for text and Markdown files
+      cmp.setup.filetype("txt", {
+        enabled = false,
+      })
+
+      cmp.setup.filetype("markdown", {
+        enabled = false,
+      })
+
       function leave_snippet()
           if
               ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')

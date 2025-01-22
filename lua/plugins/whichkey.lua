@@ -40,6 +40,12 @@ return {
           separator = "➜", -- symbol used between a key and it's label
           group = "+", -- symbol prepended to a group
         },
+
+        win = {
+          wo = {
+            -- winblend = 50,
+          },
+        },
         show_help = true, -- show help message on the command line when the popup is visible
         triggers = {"<leader>"}, -- automatically setup triggers
         -- triggers = {"<leader>"} -- or specify a list manually

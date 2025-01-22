@@ -35,7 +35,8 @@ return {
         -- HTML
         "html",
         -- Javascript
-        "ts_ls",
+        -- NOTE: Replaced with `pmizio/typescript-tools.nvim`
+        -- "ts_ls",
         -- Python
         "pyright",
         -- Bash

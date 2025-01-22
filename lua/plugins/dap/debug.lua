@@ -228,7 +228,7 @@ return {
             type = "pwa-chrome",
             name = "Launch Chrome",
             request = "launch",
-            url = "http://localhost:5173", -- This is for Vite. Change it to the framework you use
+            url = "http://localhost:3000", -- This is for Vite. Change it to the framework you use
             webRoot = "${workspaceFolder}",
             userDataDir = "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
           },
@@ -252,7 +252,7 @@ return {
             type = "pwa-chrome",
             name = "Launch Chrome",
             request = "launch",
-            url = "http://localhost:5173", -- This is for Vite. Change it to the framework you use
+            url = "http://localhost:3000", -- This is for Vite. Change it to the framework you use
             webRoot = "${workspaceFolder}",
             userDataDir = "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
           },
