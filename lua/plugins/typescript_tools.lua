@@ -9,6 +9,6 @@ return {
       }
       return opts
     end,
-    ft = {'typescript', 'javascript'},
+    ft = {'typescript', 'javascript', 'typescriptreact'},
   },
 }

@@ -12,6 +12,7 @@ return {
       -- snippets
       "L3MON4D3/LuaSnip", --snippet engine
       "rafamadriz/friendly-snippets", -- a bunch of snippets to use
+      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true }
     },
     event = "VeryLazy",
     config = function ()

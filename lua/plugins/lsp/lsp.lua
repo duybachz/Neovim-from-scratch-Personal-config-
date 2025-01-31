@@ -49,6 +49,8 @@ return {
         "yamlls",
         -- CMake
         "cmake",
+        -- Tailwind CSS
+        "tailwindcss",
       }
 
       local settings = {
